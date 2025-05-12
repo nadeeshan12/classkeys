@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="search.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassKey - Sri Lanka's most powerful educational platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <script src="dark-mode.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="img/logo.png" alt="ClassKey Logo">
+            </div>
+            
+            <!-- Mobile Search Bar (visible only on mobile) -->
+            <div class="mobile-search">
+                <input type="text" placeholder="Search...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <!-- Desktop Menu (visible only on desktop) -->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="https://classkeypdf.ct.ws/?page_id=19">Papers</a></li>
+                    <li><a href="unit.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="news.html">Articles</a></li>
+                </ul>
+            </nav>
+
+            <!-- Desktop Search Bar (visible only on desktop) -->
+            <div class="desktop-search">
+                <input type="text" id="siteSearch" placeholder="Search anything..." onkeyup="searchSite(this.value)">
+                <button type="button"><i class="fas fa-search"></i></button>
+                <div id="searchResults" class="search-results"></div>
+            </div>
+
+            <!-- Social Icons (visible only on desktop) -->
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <!-- Notification Icon -->
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+
+            <!-- Dark Mode Toggle -->
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            
+        </div>
+    </header>
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-container">
+            <div class="typing-container">
+                <h1 class="typing-text" data-text="ClassKey">ClassKey</h1>
+            </div>
+            <p class="hero-description">The key to passing the exam is for your free use. This application was created for you because education is valuable and its beginning is in the common school.</p>
+            <div class="hero-buttons">
+                <a href="dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-graduation-cap"></i>
+                    Dashboard
+                </a>
+                <a href="contact.html" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" data-aos="fade-up">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">About ClassKey</h2>
+                <div class="about-text" data-aos="fade-right">
+                    <p>සාමාන්‍යපෙල සදහා සූදානම් වන දරුවන් වෙනුවෙන් මෙම වෙබ්පිටුව හදුන්වාදෙන ලදී,උත්සහය තිබුනද කැපවීමට අකමැති කාලයකි එනම් 10/11 වසර වල දරුවන් හීන ලෝකයක සැරිසරයි.පොත පතින් ඈත්වී සිටින එයාලට අලුත් විදිහට අධ්‍යාපනය ලබා දීමේ අරමුණින් මෙම වෙබ්පිටුව අප විසින් සංවර්ධනය කරන ලදී.ඔබ සැමට විශිෂ්ථ ප්‍රථිපලයක් කරා යාමට සුබ පැතුම්.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Pass papers,Modle Papers</li>
+                        <li><i class="fas fa-check-circle"></i> Quiz Platform</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 student support</li>
+                        <li><i class="fas fa-check-circle"></i> Easy study resources</li>
+                    </ul>
+                    <a href="dashboard.html" class="btn btn-primary">
+                        <i class="fas fa-info-circle"></i>
+                        Learn More
+                    </a>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <img src="img/teacher.png" alt="About ClassKey">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="articles-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Latest Articles</h2>
+            <div class="articles-grid">
+                <!-- Article Card 1 -->
+                <article class="article-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="article-image">
+                        <img src="art/img/exams.jpg" alt="Article 1">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Mortivation</span>
+                        <h3>සාමායපෙළ හෙටද?</h3>
+                        <p>මේ මෝඩ වැඩ ටිකනම් හෙට කරන්න එපා</p>
+                        <a href="art/1.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article Card 2 -->
+                <article class="article-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="article-image">
+                        <img src="art/img/read.png" alt="Article 2">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Reading methods</span>
+                        <h3>පාඩම් නොකරන්න හේතු</h3>
+                        <p>කියවලාම බලන්න</p>
+                        <a href="art/2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article Card 3 -->
+            
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonials-grid">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card">
+                    <div class="student-profile">
+                        <div class="profile-icon">
+                            <i class="fas fa-user"></i>
+                            <span class="verified-badge">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"මම ඉතා සතුටින් මෙම පන්තියට සම්බන්ධ වුනා. විශේෂයෙන් දිගින් දිගටම පවත්වාගෙන යන පන්ති මාලාව තුළින් ගණිතය විෂයට ඇති ආකල්පය වෙනස් වුණා."</p>
+                        <h4 class="student-name">නිලූෂි පෙරේරා</h4>
+                        <p class="student-grade">පන්තිය (O/L)</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card">
+                    <div class="student-profile">
+                        <div class="profile-icon">
+                            <i class="fas fa-user"></i>
+                            <span class="verified-badge">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"සාමාන්‍ය පෙළ ගණිත විෂය සඳහා ඉතා ප්‍රයෝජනවත් දැනුමක් ලබාගත හැකි ප්‍රශස්ත අධ්‍යාපනික. Video පාඩම්වලින් ඉගෙනගන්න ලැබීම ඉතාම වැදගත් වුණා."</p>
+                        <h4 class="student-name">සදීෂා ත්‍රිමාන්න</h4>
+                        <p class="student-grade">පන්තිය (O/L)</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="ClassKey Logo">
+                    </div>
+                    <p class="footer-description">Empowering students with innovative learning solutions and comprehensive study materials.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="https://classkeypdf.ct.ws/?page_id=19">Papers</a></li>
+                        <li><a href="unit.html">Quiz</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Courses -->
+                <div class="footer-section">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li><a href="#math">Mathematics</a></li>
+                        <li><a href="#science">Science</a></li>
+                        <li><a href="#english">English</a></li>
+                        <li><a href="#history">History</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +94 74 080 7947</li>
+                        <li><i class="fas fa-envelope"></i> datalokka38@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Embilipitiya, Sri Lanka</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 ClassKey. All rights reserved.</p>
+
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function searchSite(query) {
+            const searchResults = document.getElementById('searchResults');
+            if (query.length < 1) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            // සෙවුම් අන්තර්ගතය - මෙය ඔබේ සයිට් එකේ අන්තර්ගතයට අනුව වෙනස් කරගන්න
+            const siteContent = [
+                { title: 'Dashboard', url: 'dashboard.html', content: 'Main dashboard with courses and progress' },
+                { title: 'Papers', url: 'https://classkeypdf.ct.ws/?page_id=19', content: 'Past papers and model papers' },
+                { title: 'Quiz', url: 'unit.html', content: 'Interactive quizzes for all subjects' },
+                { title: 'Contact', url: 'contact.html', content: 'Contact information and support' },
+                { title: 'Articles', url: 'news.html', content: 'Educational articles and updates' },
+                // ඔබේ සයිට් එකේ අනෙකුත් පිටු එකතු කරන්න
+            ];
+
+            const results = siteContent.filter(item => {
+                const searchText = (item.title + ' ' + item.content).toLowerCase();
+                return searchText.includes(query.toLowerCase());
+            });
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.map(item => `
+                    <a href="${item.url}" class="search-result-item">
+                        <div class="result-title">${highlightText(item.title, query)}</div>
+                        <div class="result-content">${highlightText(item.content, query)}</div>
+                    </a>
+                `).join('');
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.innerHTML = '<div class="no-results">No results found</div>';
+                searchResults.style.display = 'block';
+            }
+        }
+
+        function highlightText(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        // Click event to close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchResults = document.getElementById('searchResults');
+            const searchContainer = document.querySelector('.desktop-search');
+            if (!searchContainer.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,    // අනිමේෂන් කාලය මිලි තත්පර වලින්
+            once: false,       // සෑම scroll කිරීමකදීම අනිමේෂන් පෙන්වන්න
+            mirror: true,      // scroll උඩට යද්දිත් අනිමේෂන් පෙන්වන්න
+            offset: 100,       // අනිමේෂන් පටන් ගන්න ඕන කොතනින්ද
+            easing: 'ease-in-out'
+        });
+    </script>
+
+    
+</body>
+</html>

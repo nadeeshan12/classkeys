@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ClassKey</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Dashboard specific styles */
+        .dashboard-section {
+            padding: 100px 20px 40px;
+            background: #f8f9ff;
+            min-height: 100vh;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-title {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        @media (min-width: 992px) {
+            .courses-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .live-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff3366;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .course-info {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .course-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .course-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+
+        .course-features i {
+            color: var(--primary-color);
+        }
+
+        .enroll-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .enroll-btn:hover {
+            background: var(--dark-blue);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="img/logo.png" alt="ClassKey Logo">
+            </div>
+            
+            <div class="mobile-search">
+                <input type="text" placeholder="Search...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="https://classkeypdf.ct.ws/?page_id=19">Papers</a></li>
+                    <li><a href="unit.html">Quiz</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="desktop-search">
+                <input type="text" placeholder="Search courses...">
+                <button type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+        </div>
+    </header>
+    
+  
+
+  
+
+
+
+
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <h1 class="dashboard-title">New classes</h1>
+            <div class="courses-grid">
+                <!-- Course Card 1 -->
+                
+                   
+                
+
+                <!-- Course Card 2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="img/chemistry.jpg" alt="Chemistry 2026">
+                        <span class="live-badge">LIVE</span>
+                    </div>
+                    <div class="course-content">
+                        <h2 class="course-title">Chemistry Advanced 2026</h2>
+                        <p class="course-info">May Month</p>
+                        <ul class="course-features">
+                            <li><i class="fas fa-flask"></i> Practical Sessions</li>
+                            <li><i class="fas fa-book"></i> Complete Study Material</li>
+                            <li><i class="fas fa-graduation-cap"></i> Expert Guidance</li>
+                        </ul>
+                        <a href="#" class="enroll-btn">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* Side Menu Styles */
+    .side-menu {
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        padding: 20px 15px;
+        border-radius: 0 20px 20px 0;
+        box-shadow: 5px 0 20px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .side-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .side-menu li {
+        margin: 25px 0;
+        position: relative;
+    }
+
+    .side-menu a {
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        border-radius: 12px;
+        width: 65px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-label {
+        font-size: 0.75rem;
+        margin-top: 5px;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+
+    /* Custom colors for each icon */
+    .side-menu li:nth-child(1) .menu-item { background: #e3f2fd; }
+    .side-menu li:nth-child(1) i { color: #2196f3; }
+    .side-menu li:nth-child(1) .menu-label { color: #2196f3; }
+
+    .side-menu li:nth-child(2) .menu-item { background: #f3e5f5; }
+    .side-menu li:nth-child(2) i { color: #9c27b0; }
+    .side-menu li:nth-child(2) .menu-label { color: #9c27b0; }
+
+    .side-menu li:nth-child(3) .menu-item { background: #fff3e0; }
+    .side-menu li:nth-child(3) i { color: #ff9800; }
+    .side-menu li:nth-child(3) .menu-label { color: #ff9800; }
+
+    .side-menu li:nth-child(4) .menu-item { background: #e8f5e9; }
+    .side-menu li:nth-child(4) i { color: #4caf50; }
+    .side-menu li:nth-child(4) .menu-label { color: #4caf50; }
+
+    .side-menu i {
+        font-size: 1.4rem;
+        transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+        transform: translateX(5px);
+    }
+
+    .menu-item:hover i {
+        transform: scale(1.2);
+    }
+
+    .menu-item:active {
+        transform: scale(0.95);
+    }
+
+    /* Rest of the tooltip styles remain the same */
+    .side-menu .tooltip {
+        position: absolute;
+        left: 120%;
+        top: 50%;
+        transform: translateY(-50%) translateX(10px);
+        background: #333;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        white-space: nowrap;
+    }
+
+    .side-menu .tooltip::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-style: solid;
+        border-width: 6px 6px 6px 0;
+        border-color: transparent #333 transparent transparent;
+    }
+
+    .side-menu a:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    @media (max-width: 768px) {
+        .side-menu {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: auto;
+            transform: none;
+            border-radius: 20px 20px 0 0;
+            padding: 15px;
+            background: white;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        .side-menu ul {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 400px;
+            gap: 20px;
+        }
+
+        .side-menu li {
+            margin: 0;
+        }
+
+        .menu-item {
+            width: 50px;
+            padding: 8px;
+        }
+
+        .menu-label {
+            font-size: 0.7rem;
+        }
+
+        .side-menu .tooltip {
+            display: none;
+        }
+    }
+</style>
+<style>
+.greeting-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.cat-greeting {
+    position: relative;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.cat-face {
+    width: 100px;
+    height: 100px;
+    background: #f4c430;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto 15px;
+}
+
+.cat-ears {
+    position: absolute;
+    top: -15px;
+    width: 100%;
+}
+
+.ear {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid #f4c430;
+    position: absolute;
+}
+
+.ear.left { left: 10px; transform: rotate(-15deg); }
+.ear.right { right: 10px; transform: rotate(15deg); }
+
+.cat-eyes {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+}
+
+.eye {
+    width: 12px;
+    height: 12px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    animation: blink 4s infinite;
+}
+
+.eye.left { left: 30px; }
+.eye.right { right: 30px; }
+
+.cat-nose {
+    width: 10px;
+    height: 8px;
+    background: #ff9999;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 45px;
+}
+
+.cat-mouth {
+    width: 15px;
+    height: 8px;
+    border-bottom: 2px solid #333;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
+    top: 60px;
+    left: 42px;
+}
+
+.cat-whiskers {
+    position: absolute;
+    top: 55px;
+    width: 100%;
+}
+
+.whisker-left, .whisker-right {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.whisker-left { left: 5px; }
+.whisker-right { right: 5px; }
+
+.whisker-left span, .whisker-right span {
+    width: 20px;
+    height: 1px;
+    background: #333;
+    display: block;
+}
+
+.whisker-left span { transform-origin: right; }
+.whisker-right span { transform-origin: left; }
+
+.whisker-left span:nth-child(1) { transform: rotate(-10deg); }
+.whisker-left span:nth-child(3) { transform: rotate(10deg); }
+.whisker-right span:nth-child(1) { transform: rotate(10deg); }
+.whisker-right span:nth-child(3) { transform: rotate(-10deg); }
+
+.greeting-text {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 15px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Morning Cat */
+.morning .cat-face { background: #ffd700; }
+.morning .ear { border-bottom-color: #ffd700; }
+.morning .eye { background: #663300; }
+
+/* Afternoon Cat */
+.afternoon .cat-face { background: #f4c430; }
+.afternoon .ear { border-bottom-color: #f4c430; }
+.afternoon .eye { background: #333; }
+
+/* Night Cat */
+.night .cat-face { background: #808080; }
+.night .ear { border-bottom-color: #808080; }
+.night .eye { 
+    background: #ffcc00;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+
+<body>
+    <!-- Add this after the header -->
+    <div class="side-menu">
+        <ul>
+            <li>
+                <a href="https://classkeypdf.ct.ws/?page_id=19">
+                    <div class="menu-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="menu-label">Papers</span>
+                        <span class="tooltip">Papers</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="unit.html">
+                    <div class="menu-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="menu-label">Quiz</span>
+                        <span class="tooltip">Quiz</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="news.html">
+                    <div class="menu-item">
+                        <i class="fas fa-newspaper"></i>
+                        <span class="menu-label">Article</span>
+                        <span class="tooltip">Article</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <div class="menu-item">
+                        <i class="fas fa-envelope"></i>
+                        <span class="menu-label">Contact</span>
+                        <span class="tooltip">Contact</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function updateCatGreeting() {
+            const greetingText = document.querySelector('.greeting-text');
+            const catGreeting = document.querySelector('.cat-greeting');
+            const hour = new Date().getHours();
+
+            // Remove existing time classes
+            catGreeting.classList.remove('morning', 'afternoon', 'night');
+
+            if (hour >= 6 && hour < 12) {
+                greetingText.textContent = 'Good Morning, Meow! 🌅';
+                catGreeting.classList.add('morning');
+            } else if (hour >= 12 && hour < 19) {
+                greetingText.textContent = 'Good Afternoon, Purr! ☀️';
+                catGreeting.classList.add('afternoon');
+            } else {
+                greetingText.textContent = 'Good Night, Zzz... 🌙';
+                catGreeting.classList.add('night');
+            }
+        }
+
+        // Update greeting immediately and every minute
+        updateCatGreeting();
+        setInterval(updateCatGreeting, 60000);
+    </script>
+</body>
+</html>
+
+<div class="welcome-message" id="welcomeMessage">
+    <div class="welcome-content">
+        <i class="fas fa-hand-sparkles"></i>
+        <span>ආයුබෝවන්!</span>
+    </div>
+</div>
+
+<style>
+.welcome-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-blue));
+    padding: 20px 40px;
+    border-radius: 15px;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    animation: welcomeIn 0.5s ease forwards, welcomeOut 0.5s ease forwards 2s;
+    opacity: 0;
+}
+
+.welcome-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.welcome-content i {
+    font-size: 2rem;
+    animation: sparkle 1s infinite;
+}
+
+@keyframes welcomeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes welcomeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    
+    // Animation අවසන් වූ පසු element එක ඉවත් කිරීම
+    welcomeMessage.addEventListener('animationend', function(e) {
+        if (e.animationName === 'welcomeOut') {
+            welcomeMessage.remove();
+        }
+    });
+});
+</script>
+
+    
+
+       
