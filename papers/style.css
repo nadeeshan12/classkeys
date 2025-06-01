@@ -1,0 +1,381 @@
+/* ----- Basic Setup ----- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url('img/back.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+    position: relative;
+  }
+  
+  /* ----- Back Button (Leaf-style) ----- */
+  .back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff3f57;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 25px 10px 25px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  .back-button:hover {
+    background-color: #e6334b;
+    transform: scale(1.05) rotate(-2deg);
+  }
+  
+  /* ----- Container for Buttons ----- */
+  .button-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 80px 20px 20px; /* leave space for back button */
+    flex: 1;
+  }
+  
+  /* ----- Buttons ----- */
+  .paper-button {
+    background-color: #ff3f57;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  
+  .paper-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  }
+  
+  /* ----- Responsive Styles for PC ----- */
+  @media (min-width: 768px) {
+    .button-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .paper-button {
+      max-width: 80%;
+    }
+  }
+  
+  /* ----- Footer ----- */
+  footer {
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+  }
+
+
+  .paper-button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .paper-button::before {
+    content: '';
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 80%);
+    opacity: 0;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  
+  .paper-button:hover::before {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+  }
+
+
+.papers-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.papers-title {
+    color: var(--main-color);
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.papers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.pdf-container {
+    margin-top: 100px;
+    padding: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pdf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pdf-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.pdf-item:hover {
+    transform: translateX(10px);
+}
+
+.pdf-item i {
+    font-size: 24px;
+    color: var(--main-color);
+    margin-right: 15px;
+}
+
+.pdf-item span {
+    flex-grow: 1;
+    color: var(--main-color);
+    font-size: 16px;
+}
+
+.download-link {
+    padding: 8px 15px;
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.download-link:hover {
+    opacity: 0.9;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .pdf-container {
+        margin-top: 80px;
+        padding: 10px;
+    }
+
+    .pdf-item {
+        padding: 12px 15px;
+    }
+
+    .pdf-item i {
+        font-size: 20px;
+    }
+
+    .pdf-item span {
+        font-size: 14px;
+    }
+
+    .download-link {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 768px) {
+    .papers-container {
+        padding: 10px;
+    }
+
+    .papers-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .papers-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .paper-item {
+        padding: 20px;
+    }
+
+    .paper-icon {
+        font-size: 2.5rem;
+    }
+
+    .paper-item h3 {
+        font-size: 1.3rem;
+    }
+}
+
+
+.pdf-container h2 {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--main-color);
+    text-align: center;
+    position: relative;
+}
+
+.pdf-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: var(--main-color);
+    border-radius: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .pdf-container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+}
+
+/* Quiz page styles */
+.quiz-container {
+    max-width: 1200px;
+    margin: 100px auto 20px;
+    padding: 20px;
+}
+
+.quiz-title {
+    color: var(--main-color);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.quiz-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+.quiz-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 25px;
+    text-decoration: none;
+    color: var(--main-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    animation: fadeInUp 0.8s ease;
+}
+
+.quiz-button:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-icon {
+    font-size: 2.5rem;
+    transition: transform 0.4s ease;
+}
+
+.quiz-button:hover .quiz-icon {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.quiz-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .quiz-container {
+        margin-top: 80px;
+        padding: 15px;
+    }
+
+    .quiz-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .quiz-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .quiz-button {
+        padding: 20px;
+    }
+
+    .quiz-icon {
+        font-size: 2rem;
+    }
+
+    .quiz-name {
+        font-size: 1.1rem;
+    }
+}
+  
+  
