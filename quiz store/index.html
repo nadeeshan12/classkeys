@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo">Class key Quiz</div>
+      <input type="text" id="search" placeholder="🔍 Search lesson,unit,subject...">
+      <div class="tags">
+        <span class="tag" onclick="filterTag('ඉතිහාසය')">ඉතිහාසය</span>
+        <span class="tag" onclick="filterTag('විද්‍යාව')">විද්‍යාව</span>
+        <span class="tag" onclick="filterTag('ගණිතය')">ගණිතය</span>
+        <span class="tag" onclick="filterTag('භූගෝලය')">භූගෝලය</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="quiz-list">
+    <a href="https://classkeyquiz.ct.ws/18-2/" class="card" data-tags="ඉතිහාසය">
+        <img src="img/12.jpg" alt="History Quiz">
+        <h2>බෞද්ධ සාහිත්‍යය රස විදිමු.</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/19-2/" class="card" data-tags="විද්‍යාව">
+        <img src="img/11.jpg" alt="Science Quiz">
+        <h2>හෙල කලාවන් සුරකිමු</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/20-2/" class="card" data-tags="ගණිතය">
+        <img src="img/10.jpg" alt="Math Quiz">
+        <h2>ඇති තතු කියන තිලකුණු දහම</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/21-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/9.jpg" alt="Geography Quiz">
+        <h2>සිව්සස් හැදින සැනසුම ලබමු.</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/22-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/8.jpg" alt="Geography Quiz">
+        <h2>කර්මය සහ එහි ප්‍රභේද හැදින ගනිමු.</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/23-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/7.jpg" alt="Geography Quiz">
+        <h2>සබදතා රකින මිනිස් යුතුකම්</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/24-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/6.jpg" alt="Geography Quiz">
+        <h2>විදසුන් වඩන්නෝ ඇති තතු දකින්නෝ</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/25-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/5.jpg" alt="Geography Quiz">
+        <h2>සසුන් කෙත සරු කළ,උතුමෝ ගුණැති පෙර කල</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/26-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/4.jpg" alt="Geography Quiz">
+        <h2>කුසල් සිත් වැඩි දියුණු කරමු</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/27-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/3.jpg" alt="Geography Quiz">
+        <h2>තෙරුවන ගුණ හැදින ගනිමු</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/28-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/2.jpg" alt="Geography Quiz">
+        <h2>නමදිමු අගයමු මහ සගරුවනා</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/29-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/1.jpg" alt="Geography Quiz">
+        <h2>අභියෝග ජයගත් සිදුහත් බෝසතාණෝ</h2>
+        <button>Play quiz</button>
+      </a>
+
+      
+      
+  </main>
+
+  <script>
+    const search = document.getElementById("search");
+    const cards = document.querySelectorAll(".card");
+
+    search.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? "block" : "none";
+      });
+    });
+
+    function filterTag(tag) {
+      cards.forEach(card => {
+        const tags = card.getAttribute("data-tags");
+        card.style.display = tags.includes(tag) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
