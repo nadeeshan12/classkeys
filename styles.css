@@ -1332,6 +1332,32 @@ body > h3 {
     box-shadow: none;       /* Firefox වගේ browser වලින් එන focus border remove */
 }
 
+.ad-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    background: #fffbe6;
+  }
+  
+  .ad-banner img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .ad-banner img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+  
+  
+
 
 
 
