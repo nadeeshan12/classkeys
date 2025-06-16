@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="news-section">
+        <div class="news-box" onclick="window.location.href='https://classkeyquiz.ct.ws/2025/06/16/%e0%b6%94%e0%b6%ba%e0%b7%8f%e0%b6%a7-%e0%b6%89%e0%b6%b1%e0%b7%8a%e0%b6%b1%e0%b7%9a%e0%b6%ad%e0%b7%8a-positive-inner-circle-%e0%b6%91%e0%b6%9a%e0%b6%9a%e0%b7%8a%e0%b6%af/'">
+            <img src="img/1.jpg" alt="news 1">
+            <div class="news-info">
+                <h3>ඔයාට ඉන්නේත් Positive Inner Circle එකක්ද ?</h3>
+                <span>1h</span>
+            </div>
+        </div>
+
+        <div class="news-box" onclick="window.location.href='https://classkeyquiz.ct.ws/wp-admin/post.php?post=150&action=edit'">
+            <img src="img/2.jpg" alt="news 2">
+            <div class="news-info">
+                <h3>ඔයාගේ ජීවිතය සාර්ථක කරන Warrior  Mindset එක</h3>
+                <span>2h</span>
+            </div>
+        </div>
+
+        <div class="news-box" onclick="window.location.href='https://classkeyquiz.ct.ws/2025/06/16/%e0%b6%94%e0%b6%ba%e0%b7%8f-overthinker-%e0%b6%9a%e0%b7%99%e0%b6%b1%e0%b7%99%e0%b6%9a%e0%b7%8a-%e0%b6%b1%e0%b6%b8%e0%b7%8a/'">
+            <img src="img/3.jpg" alt="news 3">
+            <div class="news-info">
+                <h3>ඔයා overthinker කෙනෙක් නම්,</h3>
+                <span>3h</span>
+            </div>
+        </div>
+
+        <div class="news-box" onclick="window.location.href='https://classkeyquiz.ct.ws/2025/06/16/%e0%b6%94%e0%b6%ba%e0%b7%8f%e0%b6%ad%e0%b7%8a-narcissistic-%e0%b6%af%e0%b7%99%e0%b6%b8%e0%b7%8f%e0%b6%b4%e0%b7%92%e0%b6%ba%e0%b6%b1%e0%b7%8a%e0%b6%9c%e0%b7%99-%e0%b6%9c%e0%b7%9c%e0%b6%af%e0%b7%94/'">
+            <img src="img/4.jpg" alt="news 3">
+            <div class="news-info">
+                <h3>ඔයාත් narcissistic දෙමාපියන්ගෙ ගොදුරක්ද?</h3>
+                <span>3h</span>
+            </div>
+        </div>
+
+        
+    </section>
+
+
+     <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ඔබගේ වෙබ් පිටුව</title>
+    <style>
+        /* ඇඩ් එක සඳහා ස්ටයිල් */
+        .ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .ad-container {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timer {
+            position: absolute;
+            bottom: -25px;
+            right: 10px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .ad-content {
+            pointer-events: none; /* තත්පර 5ක් තුළ ක්ලික් කිරීම වලකයි */
+        }
+    </style>
+</head>
+<body>
+    <!-- ඔබගේ ප්‍රධාන පිටු අන්තර්ගතය මෙතන යෙදිය යුතුය -->
+    
+    <!-- ඇඩ් ඕවර්ලේ කේතය -->
+    <div class="ad-overlay" id="adOverlay">
+        <div class="ad-container">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="ad-content" id="adContent">
+                <!-- ඔබගේ රූපයේ ලින්ක් එක මෙතන යොදන්න -->
+                <a href="https://whatsapp.com/channel/0029VahCRbiElagyTeIYfo34/11913" id="adLink" target="_blank">
+                    <img src="img/ad1.jpg" alt="Advertisement" class="ad-image">
+                </a>
+                <div class="timer" id="timer">5</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adOverlay = document.getElementById('adOverlay');
+            const closeBtn = document.getElementById('closeBtn');
+            const adContent = document.getElementById('adContent');
+            const timerElement = document.getElementById('timer');
+            const adLink = document.getElementById('adLink');
+            
+            let timeLeft = 5;
+            let timer;
+            
+            // ඇඩ් එක පෙන්වන්න
+            adOverlay.style.display = 'flex';
+            
+            // තායිමර් එක ආරම්භ කරන්න
+            function startTimer() {
+                timer = setInterval(function() {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        adContent.style.pointerEvents = 'auto'; // ක්ලික් කිරීමට ඉඩ දෙයි
+                        timerElement.style.display = 'none'; // ටයිමර් එක සඟවන්න
+                    }
+                }, 1000);
+            }
+            
+            startTimer();
+            
+            // close බටන් එක සඳහා ඉවත් කිරීමේ ක්‍රියාකාරීත්වය
+            closeBtn.addEventListener('click', function() {
+                clearInterval(timer);
+                adOverlay.style.opacity = '0';
+                setTimeout(function() {
+                    adOverlay.style.display = 'none';
+                }, 500);
+            });
+            
+            // තත්පර 5කට පසු ස්වයංක්‍රීයව අතුරුදහන් වීම
+            setTimeout(function() {
+                if (timeLeft > 0) return;
+                adOverlay.style.opacity = '0';
+                setTimeout(function() {
+                    adOverlay.style.display = 'none';
+                }, 500);
+            }, 5000);
+        });
+    </script>
+
+
+</body>
+</html>
