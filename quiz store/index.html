@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="top-bar">
+      <div class="logo">Class key Quiz</div>
+      <input type="text" id="search" placeholder="🔍 Search lesson,unit,subject...">
+      <div class="tags">
+        <span class="tag" onclick="filterTag('ඉතිහාසය')">ඉතිහාසය</span>
+        <span class="tag" onclick="filterTag('විද්‍යාව')">විද්‍යාව</span>
+        <span class="tag" onclick="filterTag('ගණිතය')">ගණිතය</span>
+        <span class="tag" onclick="filterTag('භූගෝලය')">භූගෝලය</span>
+      </div>
+    </div>
+  </header>
+
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ඔබගේ වෙබ් පිටුව</title>
+    <style>
+        /* ඇඩ් එක සඳහා ස්ටයිල් */
+        .ad-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .ad-container {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timer {
+            position: absolute;
+            bottom: -25px;
+            right: 10px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .ad-content {
+            pointer-events: none; /* තත්පර 5ක් තුළ ක්ලික් කිරීම වලකයි */
+        }
+    </style>
+</head>
+<body>
+    <!-- ඔබගේ ප්‍රධාන පිටු අන්තර්ගතය මෙතන යෙදිය යුතුය -->
+    
+    <!-- ඇඩ් ඕවර්ලේ කේතය -->
+    <div class="ad-overlay" id="adOverlay">
+        <div class="ad-container">
+            <button class="close-btn" id="closeBtn">×</button>
+            <div class="ad-content" id="adContent">
+                <!-- ඔබගේ රූපයේ ලින්ක් එක මෙතන යොදන්න -->
+                <a href="https://whatsapp.com/channel/0029VahCRbiElagyTeIYfo34/11913" id="adLink" target="_blank">
+                    <img src="img/ad1.jpg" alt="Advertisement" class="ad-image">
+                </a>
+                <div class="timer" id="timer">5</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const adOverlay = document.getElementById('adOverlay');
+            const closeBtn = document.getElementById('closeBtn');
+            const adContent = document.getElementById('adContent');
+            const timerElement = document.getElementById('timer');
+            const adLink = document.getElementById('adLink');
+            
+            let timeLeft = 5;
+            let timer;
+            
+            // ඇඩ් එක පෙන්වන්න
+            adOverlay.style.display = 'flex';
+            
+            // තායිමර් එක ආරම්භ කරන්න
+            function startTimer() {
+                timer = setInterval(function() {
+                    timeLeft--;
+                    timerElement.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        adContent.style.pointerEvents = 'auto'; // ක්ලික් කිරීමට ඉඩ දෙයි
+                        timerElement.style.display = 'none'; // ටයිමර් එක සඟවන්න
+                    }
+                }, 1000);
+            }
+            
+            startTimer();
+            
+            // close බටන් එක සඳහා ඉවත් කිරීමේ ක්‍රියාකාරීත්වය
+            closeBtn.addEventListener('click', function() {
+                clearInterval(timer);
+                adOverlay.style.opacity = '0';
+                setTimeout(function() {
+                    adOverlay.style.display = 'none';
+                }, 500);
+            });
+            
+            // තත්පර 5කට පසු ස්වයංක්‍රීයව අතුරුදහන් වීම
+            setTimeout(function() {
+                if (timeLeft > 0) return;
+                adOverlay.style.opacity = '0';
+                setTimeout(function() {
+                    adOverlay.style.display = 'none';
+                }, 500);
+            }, 5000);
+        });
+    </script>
+
+
+
+  <main id="quiz-list">
+    <a href="https://classkeyquiz.ct.ws/18-2/" class="card" data-tags="ඉතිහාසය">
+        <img src="img/12.jpg" alt="History Quiz">
+        <h2>බෞද්ධ සාහිත්‍යය රස විදිමු.</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/19-2/" class="card" data-tags="විද්‍යාව">
+        <img src="img/11.jpg" alt="Science Quiz">
+        <h2>හෙල කලාවන් සුරකිමු</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/20-2/" class="card" data-tags="ගණිතය">
+        <img src="img/10.jpg" alt="Math Quiz">
+        <h2>ඇති තතු කියන තිලකුණු දහම</h2>
+        <button>Play quiz</button>
+      </a>
+      
+      <a href="https://classkeyquiz.ct.ws/21-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/9.jpg" alt="Geography Quiz">
+        <h2>සිව්සස් හැදින සැනසුම ලබමු.</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/22-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/8.jpg" alt="Geography Quiz">
+        <h2>කර්මය සහ එහි ප්‍රභේද හැදින ගනිමු.</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/23-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/7.jpg" alt="Geography Quiz">
+        <h2>සබදතා රකින මිනිස් යුතුකම්</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/24-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/6.jpg" alt="Geography Quiz">
+        <h2>විදසුන් වඩන්නෝ ඇති තතු දකින්නෝ</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/25-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/5.jpg" alt="Geography Quiz">
+        <h2>සසුන් කෙත සරු කළ,උතුමෝ ගුණැති පෙර කල</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/26-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/4.jpg" alt="Geography Quiz">
+        <h2>කුසල් සිත් වැඩි දියුණු කරමු</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/27-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/3.jpg" alt="Geography Quiz">
+        <h2>තෙරුවන ගුණ හැදින ගනිමු</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/28-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/2.jpg" alt="Geography Quiz">
+        <h2>නමදිමු අගයමු මහ සගරුවනා</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/29-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/1.jpg" alt="Geography Quiz">
+        <h2>අභියෝග ජයගත් සිදුහත් බෝසතාණෝ</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/41-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/19.jpg" alt="Geography Quiz">
+        <h2>සසුන සුරැකි සංගායනා</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/40-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/18.jpg" alt="Geography Quiz">
+        <h2>නිවැරැදි ආහාර පරිභෝජනයෙන් සුව සේ වෙසෙමු</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/44-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/17.jpg" alt="Geography Quiz">
+        <h2>නීරෝගී බව උතුම් ලාභයයි</h2>
+        <button>Play quiz</button>
+      </a>
+
+      <a href="https://classkeyquiz.ct.ws/45-2/" class="card" data-tags="භූගෝලය">
+        <img src="img/22.jpg" alt="Geography Quiz">
+        <h2>රාජ්‍ය පාලනය පිළිබඳ බෞද්ධ ඉගැන්වීම්</h2>
+        <button>Play quiz</button>
+      </a>
+
+      
+      
+  </main>
+
+  <script>
+    const search = document.getElementById("search");
+    const cards = document.querySelectorAll(".card");
+
+    search.addEventListener("input", function () {
+      const query = this.value.toLowerCase();
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? "block" : "none";
+      });
+    });
+
+    function filterTag(tag) {
+      cards.forEach(card => {
+        const tags = card.getAttribute("data-tags");
+        card.style.display = tags.includes(tag) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
