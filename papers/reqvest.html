@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ප්‍රශ්න පත්‍ර අයදුම් පත</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #ff3f57;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #ff3f57;
+            outline: none;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #ff3f57;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #e6374d;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ප්‍රශ්න පත්‍ර අයදුම් පත</h1>
+        
+        <form id="paperRequestForm">
+            <div class="form-group">
+                <label for="name">නම *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="grade">ශ්‍රේණිය *</label>
+                <select id="grade" name="grade" required>
+                    <option value="">තෝරන්න</option>
+                    <option value="6 ශ්‍රේණිය">6 ශ්‍රේණිය</option>
+                    <option value="7 ශ්‍රේණිය">7 ශ්‍රේණිය</option>
+                    <option value="8 ශ්‍රේණිය">8 ශ්‍රේණිය</option>
+                    <option value="9 ශ්‍රේණිය">9 ශ්‍රේණිය</option>
+                    <option value="10 ශ්‍රේණිය">10 ශ්‍රේණිය</option>
+                    <option value="11 ශ්‍රේණිය">11 ශ්‍රේණිය</option>
+                    <option value="12 ශ්‍රේණිය">12 ශ්‍රේණිය</option>
+                    <option value="13 ශ්‍රේණිය">13 ශ්‍රේණිය</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="details">ඔබට අවශ්‍ය ප්‍රශ්න පත්‍රයේ විස්තර *</label>
+                <textarea id="details" name="details" required placeholder="උදා: ගණිතය - 2020 අ.පො.ස. සාමාන්‍ය පෙළ පසුගිය ප්‍රශ්න පත්‍රය"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send (යවන්න)</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            ඔබගේ අයදුම්පත සාර්ථකව යවන ලදී! ඔබව WhatsApp හරහා සම්බන්ධ කරගනු ලැබේ.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('paperRequestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const grade = document.getElementById('grade').value;
+            const details = document.getElementById('details').value;
+            
+            // Format WhatsApp message
+            const message = `*ප්‍රශ්න පත්‍ර අයදුම්පත*\n\n` +
+                           `*නම:* ${name}\n` +
+                           `*ශ්‍රේණිය:* ${grade}\n` +
+                           `*විස්තර:* ${details}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Your WhatsApp number
+            const whatsappNumber = '94718774025';
+            
+            // Create WhatsApp link
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            document.getElementById('paperRequestForm').reset();
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
