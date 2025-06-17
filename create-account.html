@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Class key - Create Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('img/back.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-title {
+            color: #ff3f57;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .create-account-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff3f57;
+            border: none;
+            border-radius: 5px;
+            color: black;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .back-to-login-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #ff3f57;
+            border-radius: 5px;
+            color: #ff3f57;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="login-title">Create New Account</h1>
+        <form id="customSignupForm">
+            <div class="input-group">
+                <input type="email" id="signupEmail" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="signupPassword" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <button type="submit" class="create-account-btn">Create Account</button>
+        </form>
+
+        <button id="backToLoginBtn" class="back-to-login-btn">Back to Login</button>
+    </div>
+
+    <script type="module">
+        // ✅ Firebase SDK imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+        // ✅ Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDh6ZGA2JJPl--8Q5Y5jeDVactXX5kdYCY",
+            authDomain: "rp-bet-site.firebaseapp.com",
+            projectId: "rp-bet-site",
+            appId: "1:1016105914534:web:c141401761dff0e0f8a467"
+        };
+
+        // ✅ Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Custom Signup Handler
+        document.getElementById("customSignupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Save user details to Firestore
+                await setDoc(doc(db, "users", user.uid), {
+                    uid: user.uid,
+                    email: user.email,
+                    createdAt: new Date().toISOString()
+                });
+
+                alert("Account created successfully!");
+                window.location.href = "google-login.html"; // Redirect after account creation
+            } catch (error) {
+                alert("Signup failed: " + error.message);
+            }
+        });
+
+        // Back to Login
+        document.getElementById("backToLoginBtn").addEventListener("click", () => {
+            window.location.href = "index.html"; // Redirect back to login page
+        });
+    </script>
+</body>
+</html>
