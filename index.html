@@ -162,12 +162,7 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
-        // Google Login
-        document.getElementById("google-login").addEventListener("click", async () => {
-            const provider = new GoogleAuthProvider();
-            try {
-                const result = await signInWithPopup(auth, provider);
-                const user = result.user;
+      
 
                 // Save to Firestore
                 await setDoc(doc(db, "users", user.uid), {
