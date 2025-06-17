@@ -10,7 +10,13 @@
 <body>
 
 
-    
+    <script>
+  // පරිශීලක ලොගින් වී ඇත්දැයි පරීක්ෂා කරන්න
+  if(!localStorage.getItem('isLoggedIn')) {
+    // ලොගින් වී නැතිනම් ලොගින් පිටුවට හරවා යවන්න
+    window.location.href = "google-login.html";
+  }
+</script>
     
     <header class="header">
         <div class="logo">
@@ -294,32 +300,154 @@
             </div>
         </footer>
 
-    <script src="script.js"></script>
-        <!-- Add this before closing body tag -->
-        <nav class="mobile-nav">
-            <a href="news/list.html" class="nav-item">
-                <i class="fas fa-newspaper"></i>
-                <span>News</span>
-            </a>
-            <a href="papers/list.html" class="nav-item">
-                <i class="fas fa-file-alt"></i>
-                <span>Papers</span>
-            </a>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassKey Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Mobile Navigation Styles */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: white;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #888;
+            font-size: 12px;
+            position: relative;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item span {
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            width: 40px;
+            height: 40px;
+            background: #ff3f57;
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover,
+        .nav-item:focus,
+        .nav-item.active {
+            color: #ff3f57;
+            transform: translateY(-5px);
+        }
+        
+        .nav-item:hover i,
+        .nav-item:focus i,
+        .nav-item.active i {
+            transform: scale(1.2);
+        }
+        
+        .nav-item:hover::before,
+        .nav-item:focus::before,
+        .nav-item.active::before {
+            opacity: 0.2;
+            transform: scale(1);
+        }
+        
+        /* Pulse animation for active item */
+        @keyframes pulse {
+            0% { transform: translateY(-5px) scale(1); }
+            50% { transform: translateY(-5px) scale(1.1); }
+            100% { transform: translateY(-5px) scale(1); }
+        }
+        
+        .nav-item.active {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Add space for content above nav */
+        body {
+            padding-bottom: 70px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your page content here -->
     
-            <a href="https://classkeypdf.ct.ws/?page_id=19&i=1" class="nav-item">
-                <i class="fas fa-search"></i>
-                <span>Search</span>
-            </a>
-            <a href="cotact/ctc.html" class="nav-item">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
-            </a>
-            <a href="cotact/group.html" class="nav-item">
-                <i class="fas fa-users"></i>
-                <span>Group</span>
-            </a>
-        </nav>
+    <!-- Modern Bottom Navigation -->
+    <nav class="mobile-nav">
+        <a href="news/list.html" class="nav-item">
+            <i class="fas fa-newspaper"></i>
+            <span>News</span>
+        </a>
+        <a href="papers/list.html" class="nav-item active">
+            <i class="fas fa-file-alt"></i>
+            <span>Papers</span>
+        </a>
+        <a href="https://classkeypdf.ct.ws/?page_id=19&i=1" class="nav-item">
+            <i class="fas fa-search"></i>
+            <span>Search</span>
+        </a>
+        <a href="cotact/ctc.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+        <a href="cotact/group.html" class="nav-item">
+            <i class="fas fa-users"></i>
+            <span>Group</span>
+        </a>
+    </nav>
 
+    <script>
+        // Add active class to current page
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const currentPage = window.location.pathname.split('/').pop();
+            
+            navItems.forEach(item => {
+                const itemPage = item.getAttribute('href').split('/').pop();
+                if (currentPage.includes(itemPage)) {
+                    item.classList.add('active');
+                }
+                
+                // Add click effect
+                item.addEventListener('click', function() {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
 
         <script>
             const toggle = document.getElementById('theme-toggle');
