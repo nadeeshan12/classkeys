@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page with Verified Badges</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --main-color: #ff3f57;
+            --light-color: #ff6b7d;
+            --dark-color: #e6354d;
+            --verified-blue: #1da1f2;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .quiz-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 160px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 63, 87, 0.2);
+        }
+        
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--main-color), var(--light-color));
+            box-shadow: 0 4px 8px rgba(255, 63, 87, 0.3);
+        }
+        
+        .quiz-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .quiz-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .verified-badge {
+            color: var(--verified-blue);
+            font-size: 14px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: var(--main-color);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Quiz</h1>
+    
+    <div class="quiz-container">
+        <!-- Past Papers Quiz -->
+        <a href="papers/squiz.html" class="quiz-card">
+            <div class="icon-container">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="quiz-title">
+                Past Papers
+                <i class="fas fa-check-circle verified-badge"></i>
+            </div>
+            <div class="quiz-desc">Test with previous exams</div>
+        </a>
+        
+        <!-- Lessons Quiz -->
+        <a href="quiz store/index.html" class="quiz-card">
+            <div class="icon-container">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div class="quiz-title">
+                Lessons Quiz
+                <i class="fas fa-check-circle verified-badge"></i>
+            </div>
+            <div class="quiz-desc">Chapter by chapter</div>
+        </a>
+        
+        <!-- Good Morning Quiz -->
+        <a href="papers/gm.html" class="quiz-card">
+            <div class="icon-container">
+                <i class="fas fa-sun"></i>
+            </div>
+            <div class="quiz-title">
+                Morning Quiz
+            </div>
+            <div class="quiz-desc">Start your day right</div>
+        </a>
+        
+        <!-- Weekly Quiz -->
+        <a href="weekly_quiz.html" class="quiz-card">
+            <div class="icon-container">
+                <i class="fas fa-calendar-week"></i>
+            </div>
+            <div class="quiz-title">
+                Weekly Quiz
+                <i class="fas fa-check-circle verified-badge"></i>
+            </div>
+            <div class="quiz-desc">Test your progress</div>
+        </a>
+        
+        <!-- Special Quiz -->
+        <a href="special_quiz.html" class="quiz-card">
+            <div class="icon-container">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="quiz-title">
+                Special Quiz
+            </div>
+            <div class="quiz-desc">Unique challenges</div>
+        </a>
+    </div>
+</body>
+</html>

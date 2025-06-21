@@ -65,18 +65,334 @@
    
 
     <!-- Replace the empty section with this slider section -->
-    <section class="slider-section">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special For You Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --main-color: #ff6b6b;
+            --secondary-color: #ffa502;
+            --text-color: #2f3542;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f1f2f6;
+        }
+        
+        /* Slider Styles */
+        .special-slider {
+            width: 100%;
+            max-width: 1200px;
+            margin: 50px auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 37px;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            max-width: 500px;
+            color: white;
+            z-index: 2;
+        }
+        
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .slide-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: var(--text-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+        
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--main-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .prev-btn {
+            left: 20px;
+        }
+        
+        .next-btn {
+            right: 20px;
+        }
+        
+        /* Slide Backgrounds */
+        .slide:nth-child(1) {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(255, 165, 2, 0.8)), 
+                        url('https://plus.unsplash.com/premium_photo-1682089337964-415c6ea8b886?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHNjaG9vbCUyMHN0dWRlbnR8ZW58MHx8MHx8fDA%3D');
+        }
+        
+        .slide:nth-child(2) {
+            background: linear-gradient(135deg, rgba(46, 213, 115, 0.8), rgba(32, 178, 170, 0.8)), 
+                        url('https://images.unsplash.com/photo-1569173675610-42c361a86e37?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fHNjaG9vbCUyMHN0dWRlbnR8ZW58MHx8MHx8fDA%3D');
+        }
+        
+        .slide:nth-child(3) {
+            background: linear-gradient(135deg, rgba(75, 123, 236, 0.8), rgba(120, 111, 166, 0.8)), 
+                        url('https://plus.unsplash.com/premium_photo-1682089325997-ce7bd8d5df44?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjQ4fHxzY2hvb2wlMjBzdHVkZW50fGVufDB8fDB8fHww');
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .slider-container {
+                height: 400px;
+            }
+            
+            .slide {
+                padding: 0 40px;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slider-container {
+                height: 350px;
+            }
+            
+            .slide {
+                padding: 0 20px;
+            }
+            
+            .slide-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="special-slider">
         <div class="slider-container">
-            <div class="slider">
-                <img src="img/slider/1s.jpg" alt="Slide 1" class="slide active">
-                <img src="img/slider/s2.jpg" alt="Slide 2" class="slide">
-                <img src="img/slider/s3.jpg" alt="Slide 3" class="slide">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <div class="slide-content">
+                    <h2>#A9 Plan එක</h2>
+                    <p>දැන්ම වැඩ පටගන්න එන්නෝ!</p>
+                    <a href="#" class="btn">Click here</a>
+                </div>
             </div>
-            <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
-            <div class="slider-dots"></div>
+            
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Quiz වැස්සක්</h2>
+                    <p>පොත් එක්කම හිරවෙලා එපාවෙලාද?</p>
+                    <a href="#" class="btn">Click here</a>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Pass Papers ඔක්කොම මෙන්න</h2>
+                    <p>පසුගිය විභාග ප්‍රශ්න පත්‍ර සියල්ල මෙතනින්</p>
+                    <a href="#" class="btn">Click here</a>
+                </div>
+            </div>
         </div>
-    </section>
+        
+        <button class="nav-btn prev-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <button class="nav-btn next-btn">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="slider-nav">
+            <div class="slider-dot active" data-index="0"></div>
+            <div class="slider-dot" data-index="1"></div>
+            <div class="slider-dot" data-index="2"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+            let intervalId;
+            
+            // Initialize slider
+            function initSlider() {
+                updateSlider();
+                startAutoSlide();
+            }
+            
+            // Update slider display
+            function updateSlider() {
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentIndex);
+                });
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Go to next slide
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlider();
+            }
+            
+            // Go to previous slide
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlider();
+            }
+            
+            // Start auto sliding
+            function startAutoSlide() {
+                clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, 5000);
+            }
+            
+            // Event listeners
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startAutoSlide();
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startAutoSlide();
+            });
+            
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentIndex = parseInt(dot.getAttribute('data-index'));
+                    updateSlider();
+                    startAutoSlide();
+                });
+            });
+            
+            // Initialize slider
+            initSlider();
+        });
+    </script>
+</body>
+</html>
+
+    
     
       
     <section class="features">
@@ -117,11 +433,79 @@
         </div>
     </section>
 
-    <section class="ad-banner">
-     <a href="quiz store/index.html" target="_blank">
-    <img src="img/quiz.jpg" alt="WIKI Forum Ad">
-     </a>
-     </section>
+    <section class="button-section">
+  <div class="button-container">
+    <a href="https://classkeypdf.ct.ws/?page_id=443" class="custom-btn btn-primary">A9 Plan</a>
+    <a href="https://classkeypdf.ct.ws/?page_id=445" class="custom-btn btn-secondary">A5 Plan</a>
+  </div>
+</section>
+
+
+<section class="subject-plans-section">
+  <div class="section-header">
+    <h2>Subject Plans</h2>
+    <span class="subject-tag">A+ Plan for you</span>
+  </div>
+  
+  <div class="subject-grid">
+    <!-- Maths -->
+    <a href="subjl/maths.html" class="subject-card maths-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h16v-7h2v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-8h2v7zm9-10v7h-2V9H6l6-6 6 6h-5z"/></svg>
+      </div>
+      <h3>Maths A Plan</h3>
+    </a>
+    
+    <!-- Science -->
+    <a href="subjl/sci.html" class="subject-card science-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14v-4H8v4H4v-4h3.5v-1h9v1H20v4h-4z"/></svg>
+      </div>
+      <h3>Science A Plan</h3>
+    </a>
+    
+    <!-- History -->
+    <a href="subjl/history.html" class="subject-card history-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+      </div>
+      <h3>History A Plan</h3>
+    </a>
+    
+    <!-- Buddhism -->
+    <a href="subjl/buddhism.html" class="subject-card buddhism-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+      </div>
+      <h3>Buddhism A Plan</h3>
+    </a>
+    
+    <!-- ICT -->
+    <a href="subjl/ict.html" class="subject-card ict-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+      </div>
+      <h3>ICT A Plan</h3>
+    </a>
+    
+    <!-- Commerce -->
+    <a href="subjl/com.html" class="subject-card commerce-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+      </div>
+      <h3>Commerce A Plan</h3>
+    </a>
+    
+    <!-- Sinhala -->
+    <a href="subjl/sin.html" class="subject-card sinhala-card">
+      <div class="subject-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>
+      </div>
+      <h3>Sinhala A Plan</h3>
+    </a>
+  </div>
+</section>
+
 
     
         <h3>Quiz</h3>
@@ -247,6 +631,10 @@
             </div>
         </section>
 
+
+
+
+
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-logo">
@@ -291,6 +679,241 @@
                 <p>&copy; 2025 Classkey. All rights reserved.</p>
             </div>
         </footer>
+
+        <footer class="colorful-footer">
+  <div class="footer-nav">
+    <!-- Motivations -->
+    <a href="news/list.html" class="footer-item">
+      <div class="footer-icon" style="background-color: #ff3f57;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>
+      </div>
+      <span class="footer-text">Motivations</span>
+    </a>
+    
+    <!-- Papers -->
+    <a href="papers/list.html" class="footer-item">
+      <div class="footer-icon" style="background-color: #3f88ff;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h2v5H7zm4-7h2v12h-2zm4 5h2v7h-2z"/></svg>
+      </div>
+      <span class="footer-text">Papers</span>
+    </a>
+    
+    <!-- Quiz -->
+    <a href="quizlist.html" class="footer-item">
+      <div class="footer-icon" style="background-color: #6f42c1;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>
+      </div>
+      <span class="footer-text">Quiz</span>
+    </a>
+    
+    <!-- Search -->
+    <a href="https://classkeypdf.ct.ws/?page_id=19&i=1" class="footer-item">
+      <div class="footer-icon" style="background-color: #28a745;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </div>
+      <span class="footer-text">Search</span>
+    </a>
+    
+    <!-- Contact -->
+    <a href="cotact/ctc.html" class="footer-item">
+      <div class="footer-icon" style="background-color: #fd7e14;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>
+      </div>
+      <span class="footer-text">Contact</span>
+    </a>
+  </div>
+</footer>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subtle Education Items Rain</title>
+    <style>
+        /* CSS Styles */
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .content {
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .education-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .education-item {
+            position: absolute;
+            font-size: 20px;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            will-change: transform;
+            opacity: 0.7;
+        }
+        
+        /* Left side items falling diagonally right */
+        .item-left {
+            animation-name: fall-right;
+            left: -50px;
+        }
+        
+        /* Right side items falling diagonally left */
+        .item-right {
+            animation-name: fall-left;
+            right: -50px;
+        }
+        
+        @keyframes fall-right {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) translateX(200px) rotate(180deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fall-left {
+            0% {
+                transform: translateY(-100px) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) translateX(-200px) rotate(-180deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Content styling */
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        p {
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="education-rain" id="educationRain"></div>
+    
+   
+    <script>
+        // JavaScript for subtle education items rain animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const rainContainer = document.getElementById('educationRain');
+            const educationItems = ['📚', '✏️', '📏', '📒', '🖍️', '🧮'];
+            const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c'];
+            
+            // Reduced density - only 10 items at a time
+            const density = 10;
+            
+            // Create initial falling education items
+            for (let i = 0; i < density; i++) {
+                createEducationItem();
+            }
+            
+            // Add new items less frequently
+            setInterval(createEducationItem, 1000);
+            
+            function createEducationItem() {
+                const item = document.createElement('div');
+                item.className = 'education-item';
+                
+                // Randomly select an education item
+                const randomItem = educationItems[Math.floor(Math.random() * educationItems.length)];
+                item.textContent = randomItem;
+                
+                // Smaller size range (15px to 30px)
+                const size = Math.random() * 15 + 15;
+                item.style.fontSize = `${size}px`;
+                
+                // Random color
+                item.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Alternate between left and right side
+                if (Math.random() > 0.5) {
+                    item.classList.add('item-left');
+                    item.style.left = `${Math.random() * 100}px`;
+                } else {
+                    item.classList.add('item-right');
+                    item.style.right = `${Math.random() * 100}px`;
+                }
+                
+                // Slower animation duration (8-15 seconds)
+                const duration = Math.random() * 7 + 8;
+                item.style.animationDuration = `${duration}s`;
+                
+                // Random delay (0-3 seconds)
+                const delay = Math.random() * 3;
+                item.style.animationDelay = `${delay}s`;
+                
+                // Add to container
+                rainContainer.appendChild(item);
+                
+                // Remove item after animation completes
+                setTimeout(() => {
+                    item.remove();
+                }, (duration + delay) * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
+
+        
+
+      
+ 
+        
+
+        
 
     <!DOCTYPE html>
 <html lang="en">
@@ -392,6 +1015,208 @@
     </style>
 </head>
 <body>
+    </body>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .smart-nav {
+            position: fixed;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 25px 0 0 25px;
+            padding: 15px 5px;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-tab {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 60px;
+            background: linear-gradient(90deg, #6e8efb, #a777e3);
+            border-radius: 15px 0 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none; /* Remove underline from links */
+        }
+        
+        .motivation { background: linear-gradient(45deg, #FF6B6B, #FF8E8E); }
+        .papers { background: linear-gradient(45deg, #4ECDC4, #88F3E8); }
+        .quiz { background: linear-gradient(45deg, #45B7D1, #7ADBFF); }
+        .search { background: linear-gradient(45deg, #FFA07A, #FFC4A3); }
+        .contact { background: linear-gradient(45deg, #98D8C8, #C5FFE9); }
+        
+        .nav-icon:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .icon-text {
+            position: absolute;
+            right: 60px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            pointer-events: none;
+        }
+        
+        .nav-icon:hover .icon-text {
+            opacity: 1;
+            right: 70px;
+        }
+        
+        .nav-icon i {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-icon:hover i {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .smart-nav {
+                right: -55px;
+            }
+            
+            .smart-nav.active {
+                right: 0;
+            }
+            
+            .nav-icon {
+                width: 45px;
+                height: 45px;
+                margin: 8px 3px;
+            }
+            
+            .icon-text {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .smart-nav {
+                right: 0;
+            }
+            
+            .nav-tab {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your website content here -->
+
+    <!-- Smart Navigation Bar with Links -->
+    <div class="smart-nav">
+        <div class="nav-tab">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <a href="news/list.html" class="nav-icon motivation">
+            <i class="fas fa-fire fa-lg"></i>
+            <span class="icon-text">Motivation</span>
+        </a>
+        <a href="papers/list.html" class="nav-icon papers">
+            <i class="fas fa-file-alt fa-lg"></i>
+            <span class="icon-text">Papers</span>
+        </a>
+        <a href="quizlist.html" class="nav-icon quiz">
+            <i class="fas fa-question-circle fa-lg"></i>
+            <span class="icon-text">Quiz</span>
+        </a>
+        <a href="https://classkeypdf.ct.ws/?page_id=19&i=1" class="nav-icon search">
+            <i class="fas fa-search fa-lg"></i>
+            <span class="icon-text">Search</span>
+        </a>
+        <a href="cotact/ctc.html" class="nav-icon contact">
+            <i class="fas fa-envelope fa-lg"></i>
+            <span class="icon-text">Contact</span>
+        </a>
+    </div>
+    
+    <script>
+        // Mobile tab click functionality
+        const navBar = document.querySelector('.smart-nav');
+        const navTab = document.querySelector('.nav-tab');
+        
+        navTab.addEventListener('click', function() {
+            navBar.classList.toggle('active');
+            this.innerHTML = navBar.classList.contains('active') ? 
+                '<i class="fas fa-chevron-right"></i>' : 
+                '<i class="fas fa-chevron-left"></i>';
+        });
+        
+        // Add click animation to icons
+        document.querySelectorAll('.nav-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+                
+                // Hide nav bar on mobile after click
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        navBar.classList.remove('active');
+                        navTab.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                    }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    </html>
 
 
 
